@@ -3,7 +3,7 @@ using UnityEngine;
 public class FloorMove : MonoBehaviour
 {
     public float speed = 1.25f;
-    public float width = 6;
+    public float width = 7;
     public SpriteRenderer spriteRenderer;
     private Vector2 startSize;
 
