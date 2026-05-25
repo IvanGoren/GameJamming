@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Pipe : MonoBehaviour
+public class MoveLeft : MonoBehaviour
 {
 
     public float speed = 0.75f;
