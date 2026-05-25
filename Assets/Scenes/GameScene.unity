@@ -1214,7 +1214,7 @@ MonoBehaviour:
   deleteTime: 10
   heights:
   - 5
-  - 0.5
+  - 1
   - -0.5
 --- !u!4 &926872394
 Transform:

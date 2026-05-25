@@ -32,9 +32,11 @@ public class PatoZombieSpawner : MonoBehaviour
         if (timer>= 15f && duckWall)
         {
             SpawnDuckWall();
-        } else if (timer>= 15f && megaZombie)
+        } else if (timer>= 60 && megaZombie)
         {
             SpawnDuckWall();
+            megaZombie=false;
+
         }
         else if (spawnerTimer > maxTime)
         {
@@ -62,9 +64,7 @@ public class PatoZombieSpawner : MonoBehaviour
         for (int i = 0; i < heights.Count; i++)
         {
             Vector3 spawnPosition = transform.position + new Vector3(0, heights[i]);
-
             GameObject newDuck;
-
             newDuck = Instantiate(patoZombiePre, spawnPosition, Quaternion.identity);
             Destroy(newDuck, deleteTime);
         }
