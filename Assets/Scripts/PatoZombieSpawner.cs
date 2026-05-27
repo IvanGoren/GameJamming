@@ -10,15 +10,13 @@ public class PatoZombieSpawner : MonoBehaviour
     public float maxTime = 3f;
 
     public float deleteTime = 10f;
-    public List<float> heights = new() { 1f, 0.5f, -0.5f };
+    private List<float> heights = new() { 0.6f, -0.25f, -0.5f };
 
     private float spawnerTimer;
     private float timer;
 
     private bool duckWall = true;
     
-    private bool megaZombie = true;
-
     void Start()
     {
         SpawnDuck(Random.Range(-heightRange, heightRange));
@@ -27,25 +25,19 @@ public class PatoZombieSpawner : MonoBehaviour
     void Update()
     {
         spawnerTimer += Time.deltaTime;
-
+        timer += Time.deltaTime;
        
-        if (timer>= 15f && duckWall)
+        if (timer>= 6f && duckWall)
         {
             SpawnDuckWall();
-        } else if (timer>= 60 && megaZombie)
-        {
-            SpawnDuckWall();
-            megaZombie=false;
-
+            spawnerTimer = 0;
         }
         else if (spawnerTimer > maxTime)
         {
             SpawnDuck(Random.Range(-heightRange, heightRange));
             spawnerTimer = 0;
         }
-
-        timer += Time.deltaTime;
-        Debug.Log(timer);
+        
     }
 
     public void SpawnDuck(float height)
