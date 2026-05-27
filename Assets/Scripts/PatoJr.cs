@@ -23,8 +23,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+public void OnCollisionEnter2D(Collision2D collision)
+{
+    if (!collision.gameObject.CompareTag("SafeWall"))
     {
         FindAnyObjectByType<GameManager>().GameOver();
     }
+}
 }
