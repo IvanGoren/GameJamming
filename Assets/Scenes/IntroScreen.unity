@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 303302022}
   - component: {fileID: 303302021}
   m_Layer: 5
-  m_Name: Creditos
+  m_Name: CreditosText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 359662083}
   - component: {fileID: 359662082}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ReturnCreditsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 840036845}
   - component: {fileID: 840036844}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CreditosText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,7 +1341,7 @@ GameObject:
   - component: {fileID: 1228808986}
   - component: {fileID: 1228808985}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ReturnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,8 +1747,10 @@ GameObject:
   - component: {fileID: 1781465193}
   - component: {fileID: 1781465195}
   - component: {fileID: 1781465194}
+  - component: {fileID: 1781465197}
+  - component: {fileID: 1781465196}
   m_Layer: 5
-  m_Name: Creditos
+  m_Name: ExitText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1793,7 +1795,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Salir (forro)
+  m_text: Salir
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9414735594c7941429efe238dc693b96, type: 2}
   m_sharedMaterial: {fileID: 8263429962706902564, guid: 9414735594c7941429efe238dc693b96, type: 2}
@@ -1873,6 +1875,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781465192}
   m_CullTransparentMesh: 1
+--- !u!114 &1781465196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781465192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c766078972be5424fa72124e091a3e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SalirHoverScript
+  myText: {fileID: 1781465194}
+--- !u!114 &1781465197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781465192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1781465196}
+          m_TargetAssemblyTypeName: SalirHoverScript, Assembly-CSharp
+          m_MethodName: OnHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1781465196}
+          m_TargetAssemblyTypeName: SalirHoverScript, Assembly-CSharp
+          m_MethodName: OnHoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1982475522
 GameObject:
   m_ObjectHideFlags: 0
