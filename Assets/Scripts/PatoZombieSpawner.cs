@@ -27,7 +27,8 @@ public class PatoZombieSpawner : MonoBehaviour
         spawnerTimer += Time.deltaTime;
         timer += Time.deltaTime;
        
-        if (timer>= 6f && duckWall)
+
+        if (timer>= 15f && duckWall)
         {
             SpawnDuckWall();
             spawnerTimer = 0;
@@ -37,6 +38,7 @@ public class PatoZombieSpawner : MonoBehaviour
             SpawnDuck(Random.Range(-heightRange, heightRange));
             spawnerTimer = 0;
         }
+        //TODO: Spawn Mega pato al final
         
     }
 

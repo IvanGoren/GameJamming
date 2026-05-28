@@ -4,6 +4,7 @@ public class MusicController : MonoBehaviour
 {
     public AudioClip gameplayMusic;
     public AudioClip gameOverMusic;
+    public AudioClip megaWeaponMusic;
 
     public AudioSource audioSource;
 
