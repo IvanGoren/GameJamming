@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
         public bool hideObjectsOnStart = true;
         public float hideAfterSeconds;
         public UnityEvent onTrigger;
-
         [HideInInspector] public bool hasTriggered;
     }
 
