@@ -3368,6 +3368,19 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     hasTriggered: 0
+  - eventName: 00:40 - Ev5.2-D2-DrP - Horda
+    triggerAtSeconds: 40
+    speaker: 1
+    dialogueText: El Pasante se volvio a olvidar de pagar los sueldos?
+    dialogueAudio: {fileID: 8300000, guid: 44a1a7b65f7f81244ad7dbb8a9012ead, type: 3}
+    dialogueDurationSeconds: 3
+    objectsToShow: []
+    hideObjectsOnStart: 0
+    hideAfterSeconds: 0
+    onTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+    hasTriggered: 0
   - eventName: 00:45 - Ev6-D3-Glitch
     triggerAtSeconds: 45
     speaker: 1
