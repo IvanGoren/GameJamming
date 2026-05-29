@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     {
         public string eventName;
         public float triggerAtSeconds;
+        public DialogueSpeaker speaker;
+        [TextArea] public string dialogueText;
+        public AudioClip dialogueAudio;
+        public float dialogueDurationSeconds = 3f;
         public GameObject[] objectsToShow;
         public bool hideObjectsOnStart = true;
         public float hideAfterSeconds;
@@ -21,6 +25,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameObject gameOverCanvas;
     public MusicController musicController;
+    public DialogueCanvas dialogueCanvas;
+    public DialogueAudioMgr dialogueAudioMgr;
     public TimedGameEvent[] timedEvents = new TimedGameEvent[0];
 
     // Timer para gestionar dialogos.
@@ -30,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+        ResolveSceneReferences();
         ResetPlaythroughTimer();
     }
 
@@ -100,6 +107,23 @@ public class GameManager : MonoBehaviour
     private void TriggerTimedEvent(TimedGameEvent timedEvent)
     {
         timedEvent.hasTriggered = true;
+
+        ResolveSceneReferences();
+
+        if (dialogueCanvas != null && !string.IsNullOrWhiteSpace(timedEvent.dialogueText))
+        {
+            dialogueCanvas.ShowDialogue(
+                timedEvent.speaker,
+                timedEvent.dialogueText,
+                timedEvent.dialogueDurationSeconds
+            );
+        }
+
+        if (dialogueAudioMgr != null && timedEvent.dialogueAudio != null)
+        {
+            dialogueAudioMgr.PlayDialogue(timedEvent.dialogueAudio);
+        }
+
         SetTimedEventObjectsActive(timedEvent, true);
 
         timedEvent.onTrigger?.Invoke();
@@ -107,6 +131,39 @@ public class GameManager : MonoBehaviour
         if (timedEvent.hideAfterSeconds > 0)
         {
             StartCoroutine(HideTimedEventObjects(timedEvent));
+        }
+    }
+
+    private void ResolveSceneReferences()
+    {
+        if (dialogueCanvas == null)
+        {
+            dialogueCanvas = FindFirstObjectByType<DialogueCanvas>(FindObjectsInactive.Include);
+
+            if (dialogueCanvas == null)
+            {
+                GameObject dialogueCanvasObject = GameObject.Find("DialogueCanvas");
+
+                if (dialogueCanvasObject != null)
+                {
+                    dialogueCanvas = dialogueCanvasObject.AddComponent<DialogueCanvas>();
+                }
+            }
+        }
+
+        if (dialogueAudioMgr == null)
+        {
+            dialogueAudioMgr = FindFirstObjectByType<DialogueAudioMgr>(FindObjectsInactive.Include);
+
+            if (dialogueAudioMgr == null)
+            {
+                GameObject dialogueAudioObject = GameObject.Find("DialogueAudioMgr");
+
+                if (dialogueAudioObject != null)
+                {
+                    dialogueAudioMgr = dialogueAudioObject.AddComponent<DialogueAudioMgr>();
+                }
+            }
         }
     }
 
