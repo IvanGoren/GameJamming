@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 177820965}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.65, y: 0, z: 0}
+  m_LocalPosition: {x: 2.65, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1928,9 +1928,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatoZombieSpawner
   patoZombiePre: {fileID: 8998007151885358894, guid: 6e19ad2e55e851946a6a58ac6d556816, type: 3}
+  patoZombieGlitchPre: {fileID: 6787499202780632207, guid: 3d7ebcdf9fa119c499d063ce8a968e57, type: 3}
+  megaPatoZombiePre: {fileID: 6415058683284350950, guid: c33f4fdf8fd33ca40bb1ea0a9d714384, type: 3}
   heightRange: 0.5
-  maxTime: 3
-  deleteTime: 10
+  maxTime: 1.5
+  deleteTime: 7
 --- !u!4 &926872394
 Transform:
   m_ObjectHideFlags: 0
@@ -3502,8 +3504,8 @@ MonoBehaviour:
   - eventName: 01:35 - Ev16-D5-DrP - Arma
     triggerAtSeconds: 95
     speaker: 1
-    dialogueText: "SOS UN DECEREBRADO, INCAPAZ, BURRO DE LA VIDA.\r\n\xA1TE VOY A
-      DEJAR DE PATITAS EN LA CALLE!\r\n"
+    dialogueText: "PASANTE DECEREBRADO, INCAPAZ, BURRO DE LA VIDA.\r\n\xA1TE VOY
+      A DEJAR DE PATITAS EN LA CALLE!\r\n"
     dialogueAudio: {fileID: 8300000, guid: 44a1a7b65f7f81244ad7dbb8a9012ead, type: 3}
     dialogueDurationSeconds: 3
     objectsToShow: []

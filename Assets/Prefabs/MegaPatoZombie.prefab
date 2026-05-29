@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6674254285423978327}
   - component: {fileID: 4671647415172961465}
   - component: {fileID: 4091609899817476183}
+  - component: {fileID: 3991536496202457946}
   m_Layer: 0
   m_Name: MegaPatoZombie
   m_TagString: Untagged
@@ -247,3 +248,16 @@ PolygonCollider2D:
       - {x: 0.695, y: -2.745}
       - {x: 0.885, y: -2.715}
   m_UseDelaunayMesh: 1
+--- !u!114 &3991536496202457946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6415058683284350950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac908a552f387c46b851a26434b9608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
+  speed: 0.7

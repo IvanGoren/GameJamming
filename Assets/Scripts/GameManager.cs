@@ -30,8 +30,10 @@ public class GameManager : MonoBehaviour
     public TimedGameEvent[] timedEvents = new TimedGameEvent[0];
 
     // Timer para gestionar dialogos.
+    private const float MuteMusicAtSeconds = 85f;
     private float timer;
     private bool isPlaythroughRunning;
+    private bool hasMutedMusic;
 
     void Start()
     {
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
         }
 
         timer += Time.deltaTime;
+        CheckMusicMute();
         CheckTimedEvents();
     }
 
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         timer = 0;
         isPlaythroughRunning = true;
+        hasMutedMusic = false;
 
         foreach (TimedGameEvent timedEvent in timedEvents)
         {
@@ -83,6 +87,21 @@ public class GameManager : MonoBehaviour
             {
                 SetTimedEventObjectsActive(timedEvent, false);
             }
+        }
+    }
+
+    private void CheckMusicMute()
+    {
+        if (hasMutedMusic || timer < MuteMusicAtSeconds)
+        {
+            return;
+        }
+
+        hasMutedMusic = true;
+
+        if (musicController != null)
+        {
+            musicController.SetMuted(true);
         }
     }
 
