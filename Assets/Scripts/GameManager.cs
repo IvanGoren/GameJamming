@@ -52,6 +52,12 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
         CheckMusicMute();
         CheckTimedEvents();
+
+        if (timer >= 100f)
+        {
+            SceneManager.LoadScene("EndingScene");
+        }
+
     }
 
     public void GameOver()
