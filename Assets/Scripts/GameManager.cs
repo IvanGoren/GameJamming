@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
     {
         if (dialogueCanvas == null)
         {
-            dialogueCanvas = FindFirstObjectByType<DialogueCanvas>(FindObjectsInactive.Include);
+            dialogueCanvas = FindAnyObjectByType<DialogueCanvas>(FindObjectsInactive.Include);
 
             if (dialogueCanvas == null)
             {
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
 
         if (dialogueAudioMgr == null)
         {
-            dialogueAudioMgr = FindFirstObjectByType<DialogueAudioMgr>(FindObjectsInactive.Include);
+            dialogueAudioMgr = FindAnyObjectByType<DialogueAudioMgr>(FindObjectsInactive.Include);
 
             if (dialogueAudioMgr == null)
             {

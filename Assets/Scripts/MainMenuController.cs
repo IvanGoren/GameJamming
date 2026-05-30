@@ -8,7 +8,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject creditsCambas;
     public void OnStartClick()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("IntroScene");
     }
 
 
