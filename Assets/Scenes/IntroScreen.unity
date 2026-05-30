@@ -1910,8 +1910,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.7183, y: 18}
-  m_SizeDelta: {x: -21.4366, y: 0}
+  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_SizeDelta: {x: 0.000061035, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781465194
 MonoBehaviour:
@@ -1927,7 +1927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -20.245728, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.5336914, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2025,7 +2025,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c766078972be5424fa72124e091a3e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SalirHoverScript
-  myText: {fileID: 1781465194}
+  buttonText: {fileID: 0}
+  normalText: Play
+  hoverText: Start Game
 --- !u!114 &1781465197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2083,6 +2085,7 @@ GameObject:
   - component: {fileID: 1982475526}
   - component: {fileID: 1982475525}
   - component: {fileID: 1982475524}
+  - component: {fileID: 1982475527}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -2107,7 +2110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -346}
+  m_AnchoredPosition: {x: 0.74677, y: -332.9}
   m_SizeDelta: {x: 302.15, y: 63.2336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982475524
@@ -2204,6 +2207,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982475522}
   m_CullTransparentMesh: 1
+--- !u!114 &1982475527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982475522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c766078972be5424fa72124e091a3e26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SalirHoverScript
+  buttonText: {fileID: 1781465194}
+  normalText: Salir
+  hoverText: Forro!
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
