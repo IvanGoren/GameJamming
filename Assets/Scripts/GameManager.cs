@@ -10,11 +10,14 @@ public class GameManager : MonoBehaviour
     {
         public string eventName;
         public float triggerAtSeconds;
+        public DialogueSpeaker speaker;
+        [TextArea] public string dialogueText;
+        public AudioClip dialogueAudio;
+        public float dialogueDurationSeconds = 3f;
         public GameObject[] objectsToShow;
         public bool hideObjectsOnStart = true;
         public float hideAfterSeconds;
         public UnityEvent onTrigger;
-
         [HideInInspector] public bool hasTriggered;
     }
 
@@ -22,15 +25,20 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameObject gameOverCanvas;
     public MusicController musicController;
+    public DialogueCanvas dialogueCanvas;
+    public DialogueAudioMgr dialogueAudioMgr;
     public TimedGameEvent[] timedEvents = new TimedGameEvent[0];
 
     // Timer para gestionar dialogos.
+    private const float MuteMusicAtSeconds = 85f;
     private float timer;
     private bool isPlaythroughRunning;
+    private bool hasMutedMusic;
 
     void Start()
     {
         Time.timeScale = 1;
+        ResolveSceneReferences();
         ResetPlaythroughTimer();
     }
 
@@ -42,7 +50,14 @@ public class GameManager : MonoBehaviour
         }
 
         timer += Time.deltaTime;
+        CheckMusicMute();
         CheckTimedEvents();
+
+        if (timer >= 100f)
+        {
+            SceneManager.LoadScene("EndingScene");
+        }
+
     }
 
     public void GameOver()
@@ -63,6 +78,7 @@ public class GameManager : MonoBehaviour
     {
         timer = 0;
         isPlaythroughRunning = true;
+        hasMutedMusic = false;
 
         foreach (TimedGameEvent timedEvent in timedEvents)
         {
@@ -77,6 +93,21 @@ public class GameManager : MonoBehaviour
             {
                 SetTimedEventObjectsActive(timedEvent, false);
             }
+        }
+    }
+
+    private void CheckMusicMute()
+    {
+        if (hasMutedMusic || timer < MuteMusicAtSeconds)
+        {
+            return;
+        }
+
+        hasMutedMusic = true;
+
+        if (musicController != null)
+        {
+            musicController.SetMuted(true);
         }
     }
 
@@ -101,6 +132,23 @@ public class GameManager : MonoBehaviour
     private void TriggerTimedEvent(TimedGameEvent timedEvent)
     {
         timedEvent.hasTriggered = true;
+
+        ResolveSceneReferences();
+
+        if (dialogueCanvas != null && !string.IsNullOrWhiteSpace(timedEvent.dialogueText))
+        {
+            dialogueCanvas.ShowDialogue(
+                timedEvent.speaker,
+                timedEvent.dialogueText,
+                timedEvent.dialogueDurationSeconds
+            );
+        }
+
+        if (dialogueAudioMgr != null && timedEvent.dialogueAudio != null)
+        {
+            dialogueAudioMgr.PlayDialogue(timedEvent.dialogueAudio);
+        }
+
         SetTimedEventObjectsActive(timedEvent, true);
 
         timedEvent.onTrigger?.Invoke();
@@ -108,6 +156,39 @@ public class GameManager : MonoBehaviour
         if (timedEvent.hideAfterSeconds > 0)
         {
             StartCoroutine(HideTimedEventObjects(timedEvent));
+        }
+    }
+
+    private void ResolveSceneReferences()
+    {
+        if (dialogueCanvas == null)
+        {
+            dialogueCanvas = FindAnyObjectByType<DialogueCanvas>(FindObjectsInactive.Include);
+
+            if (dialogueCanvas == null)
+            {
+                GameObject dialogueCanvasObject = GameObject.Find("DialogueCanvas");
+
+                if (dialogueCanvasObject != null)
+                {
+                    dialogueCanvas = dialogueCanvasObject.AddComponent<DialogueCanvas>();
+                }
+            }
+        }
+
+        if (dialogueAudioMgr == null)
+        {
+            dialogueAudioMgr = FindAnyObjectByType<DialogueAudioMgr>(FindObjectsInactive.Include);
+
+            if (dialogueAudioMgr == null)
+            {
+                GameObject dialogueAudioObject = GameObject.Find("DialogueAudioMgr");
+
+                if (dialogueAudioObject != null)
+                {
+                    dialogueAudioMgr = dialogueAudioObject.AddComponent<DialogueAudioMgr>();
+                }
+            }
         }
     }
 

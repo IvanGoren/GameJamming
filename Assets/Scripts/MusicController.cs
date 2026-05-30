@@ -21,4 +21,9 @@ public class MusicController : MonoBehaviour
         audioSource.loop = false;
         audioSource.Play();
     }
+
+    public void SetMuted(bool isMuted)
+    {
+        audioSource.mute = isMuted;
+    }
 }
