@@ -1830,6 +1830,7 @@ MonoBehaviour:
   heightRange: 0.5
   maxTime: 1.5
   deleteTime: 7
+  extraHeight: 0.6
 --- !u!4 &926872394
 Transform:
   m_ObjectHideFlags: 0

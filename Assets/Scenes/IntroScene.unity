@@ -592,7 +592,7 @@ PlayableDirector:
   m_GameObject: {fileID: 759181539}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 2a02b9ff4ac7d9c4a9a4afbac2302896, type: 2}
+  m_PlayableAsset: {fileID: 11400000, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
@@ -616,6 +616,22 @@ PlayableDirector:
     value: {fileID: 794410468}
   - key: {fileID: 6320964768452883531, guid: 2a02b9ff4ac7d9c4a9a4afbac2302896, type: 2}
     value: {fileID: 1508069494}
+  - key: {fileID: 4110828816372768616, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 1853717203}
+  - key: {fileID: 961654912587432080, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 253877173}
+  - key: {fileID: -195506761851416628, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 1365524397}
+  - key: {fileID: 384424901523311930, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 255325811}
+  - key: {fileID: -7420015795840807333, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 794410468}
+  - key: {fileID: -6191980990673183461, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 1945840925}
+  - key: {fileID: 3552157781382229105, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 1242331314}
+  - key: {fileID: 389685986365892512, guid: 256c9a65bca051d42a201e77d86b607b, type: 2}
+    value: {fileID: 496400747}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &759181541
@@ -1638,7 +1654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

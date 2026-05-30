@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class PatoZombieSpawner : MonoBehaviour
 {
     public GameObject patoZombiePre;
-    public GameObject patoZombieGlitchPre;   
+    public GameObject patoZombieGlitchPre;
     public GameObject megaPatoZombiePre;
 
 
@@ -13,6 +13,7 @@ public class PatoZombieSpawner : MonoBehaviour
     public float maxTime = 3f;
 
     public float deleteTime = 10f;
+    public float extraHeight = 0.8f;
     private List<float> heights = new() { 0.6f, -0.25f, -0.5f };
 
     private float spawnerTimer;
@@ -21,7 +22,7 @@ public class PatoZombieSpawner : MonoBehaviour
     private bool glitchFlag = true;
     private bool armyFlag = true;
     private bool spawnFlag = true;
-    
+
     void Start()
     {
         SpawnDuck(Random.Range(-heightRange, heightRange));
@@ -31,26 +32,26 @@ public class PatoZombieSpawner : MonoBehaviour
     {
         spawnerTimer += Time.deltaTime;
         timer += Time.deltaTime;
-       
-        if(!spawnFlag)
-        {            
-        return;
+
+        if (!spawnFlag)
+        {
+            return;
         }
-       
-        if (timer>= 63f)
+
+        if (timer >= 63f)
         {
             spawnMegaDuck(0);
             this.spawnFlag = false;
             return;
         }
 
-        if (timer>= 31f && armyFlag)
+        if (timer >= 31f && armyFlag)
         {
             this.maxTime = 5f;
             this.armyFlag = false;
         }
-        
-        if (timer>= 45f && glitchFlag)
+
+        if (timer >= 45f && glitchFlag)
         {
             this.patoZombiePre = this.patoZombieGlitchPre;
             this.glitchFlag = false;
@@ -66,8 +67,6 @@ public class PatoZombieSpawner : MonoBehaviour
             SpawnDuck(Random.Range(-heightRange, heightRange));
             spawnerTimer = 0;
         }
-        //TODO: Spawn Mega pato al final
-        
     }
 
     public void SpawnDuck(float height)
@@ -85,12 +84,18 @@ public class PatoZombieSpawner : MonoBehaviour
     {
         for (int i = 0; i < heights.Count; i++)
         {
-            Vector3 spawnPosition = transform.position + new Vector3(0, heights[i]);
+            float height = heights[i];
+
+            if (i == 1 && Random.value < 0.5f)
+            {
+                height += extraHeight;
+            }
+
+            Vector3 spawnPosition = transform.position + new Vector3(0, height);
             GameObject newDuck;
             newDuck = Instantiate(patoZombiePre, spawnPosition, Quaternion.identity);
             Destroy(newDuck, deleteTime);
         }
-        
     }
 
     public void spawnMegaDuck(float height)
@@ -100,5 +105,5 @@ public class PatoZombieSpawner : MonoBehaviour
         newDuck = Instantiate(megaPatoZombiePre, spawnPosition, Quaternion.identity);
         Destroy(newDuck, 4f);
     }
-    
+
 }
